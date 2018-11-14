@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{84B59F24-1D9A-487A-8AF3-6DE4F71E954D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BumSimulator</RootNamespace>
+    <AssemblyName>BumSimulator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Events\IEvent.cs" />
+    <Compile Include="Settings\Settings.cs" />
+    <Compile Include="Stats\EducStat.cs" />
+    <Compile Include="Stats\ImageSourcesStat.cs" />
+    <Compile Include="Stats\PassportStat.cs" />
+    <Compile Include="Stats\Prices.cs" />
+    <Compile Include="Settings\UIControls.cs" />
+    <Compile Include="Stats\RaitingStat.cs" />
+    <Compile Include="Stats\TimeStat.cs" />
+    <Compile Include="Stats\TransportStat.cs" />
+    <Compile Include="Stats\Wares\Ability.cs" />
+    <Compile Include="MainGame\Game.cs" />
+    <Compile Include="MainGame\User.cs" />
+    <Compile Include="StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Stats\FoodStat.cs" />
+    <Compile Include="Stats\HpStat.cs" />
+    <Compile Include="Stats\IStat.cs" />
+    <Compile Include="Stats\BottlesStat.cs" />
+    <Compile Include="Stats\PropertyStat.cs" />
+    <Compile Include="Stats\StatusStat.cs" />
+    <Compile Include="Stats\MoodStat.cs" />
+    <Compile Include="Stats\Valutas\IValuta.cs" />
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Images\mood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Seasons\autumn.jpg" />
+    <Resource Include="Img\Seasons\spring.jpg" />
+    <Resource Include="Img\Seasons\summer.jpg" />
+    <Resource Include="Img\Seasons\winter.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\GamePagesBackgrounds\Yard.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Images\food.png" />
+    <Resource Include="Img\Images\hp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Images\food3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Images\hp2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Backgrounds\Cardboard-boxes-collection.jpg" />
+    <Resource Include="Img\Backgrounds\city-crossroads-with-traffic-lights-intersection-Cartoon-illustration-of-urban-highway.jpg" />
+    <Resource Include="Img\Backgrounds\Tent.jpg" />
+    <Resource Include="Img\Backgrounds\Town-street-with-buildings-trees-and-empty-pavement.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Sex\sex.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Sex\female.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Sex\male.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Backgrounds\Box.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Backgrounds\Apartments.jpg" />
+    <Resource Include="Img\Backgrounds\Mortgage.jpg" />
+    <Resource Include="Img\Backgrounds\Office.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Sex\male2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Backgrounds\Villa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Backgrounds\Room.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Sex\PartMale\Bottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Sex\PartMale\Head.png" />
+    <Resource Include="Img\Sex\PartMale\Pants.png" />
+    <Resource Include="Img\Sex\PartMale\TopHead.png" />
+    <Resource Include="Img\Sex\PartMale\Tors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Sex\PartMale\LeftHand.png" />
+    <Resource Include="Img\Sex\PartMale\RightHand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Images\driver-license.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Backgrounds\Cottage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Staffs\sneakers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Img\StaffsPart\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

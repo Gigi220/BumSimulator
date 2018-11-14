@@ -1,0 +1,25 @@
+﻿<Page x:Class="BumSimulator.StartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      WindowHeight="657" WindowWidth="465"
+	  Height="620" Width="465"
+      Title="StartPage" ShowsNavigationUI="False"
+      >
+
+    <Grid>
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="Img\GamePagesBackgrounds\Yard.jpg"></ImageBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="1" x:Name="NewGameButton" Style="{DynamicResource StylePassButton}" Click="NewGameButton_Click">New Game</Button>
+            <Button Grid.Row="2" x:Name="ExitButton" Style="{DynamicResource StylePassButton}" Click="ExitButton_Click">Exit</Button>
+        </Grid>
+    </Grid>
+</Page>
