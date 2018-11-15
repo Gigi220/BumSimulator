@@ -467,7 +467,7 @@
 									<Label x:Name="UAHStatLabelName" Grid.Row="1" Grid.Column="0" Template="{DynamicResource ShowLabel}">Шекелі:</Label>
 									<Label x:Name="USDStatLabelName" Grid.Row="2" Grid.Column="0" Template="{DynamicResource ShowLabel}">Капуста:</Label>
 									<Label x:Name="BottlesStatLabelName" Grid.Row="3" Grid.Column="0" Template="{DynamicResource ShowLabel}">Бутилкі:</Label>
-									<Label x:Name="TransportStatLabelName" Grid.Row="4" Grid.Column="0" Template="{DynamicResource ShowLabel}">Транспорт:</Label>
+									<!--<Label x:Name="TransportStatLabelName" Grid.Row="4" Grid.Column="0" Template="{DynamicResource ShowLabel}">Транспорт:</Label>-->
 									<Label x:Name="PropertyStatLabelName" Grid.Row="5" Grid.Column="0" Template="{DynamicResource ShowLabel}">Нерухомість:</Label>
 									<Label x:Name="RatingStatLabelName" Grid.Row="6" Grid.Column="0" Template="{DynamicResource ShowLabel}">Рейтинг:</Label>
 									<Label x:Name="StatusStatLabelName" Grid.Row="7" Grid.Column="0" Template="{DynamicResource ShowLabel}">Статус:</Label>
@@ -485,8 +485,8 @@
 										   Content="{Binding Path=User.Valutes.USD.Count, UpdateSourceTrigger=PropertyChanged}"></Label>
 									<Label x:Name="BottlesStatLabelValue" Grid.Row="3" Grid.Column="1" Template="{DynamicResource ShowLabel}" 
 										   Content="{Binding Path=User.Bottles.Count, UpdateSourceTrigger=PropertyChanged}"></Label>
-									<Label x:Name="TransportStatLabelValue" Grid.Row="4" Grid.Column="1" Template="{DynamicResource ShowLabel}"
-										   Content="{Binding Path=User.Transports.HighestTransport, UpdateSourceTrigger=PropertyChanged}"></Label>
+									<!--<Label x:Name="TransportStatLabelValue" Grid.Row="4" Grid.Column="1" Template="{DynamicResource ShowLabel}"
+										   Content="{Binding Path=User.Transports.HighestTransport, UpdateSourceTrigger=PropertyChanged}"></Label>-->
 									<Label x:Name="PropertyStatLabelValue" Grid.Row="5" Grid.Column="1" Template="{DynamicResource ShowLabel}" 
 										   Content="{Binding Path=User.Properties.HighestProperty, UpdateSourceTrigger=PropertyChanged}"></Label>
 									<Label x:Name="RatingStatLabelValue" Grid.Row="6" Grid.Column="1" Template="{DynamicResource ShowLabel}"
@@ -498,7 +498,7 @@
 						</Grid>
 
 						<Grid Grid.Row="1" VerticalAlignment="Top">
-							<Canvas x:Name="Canvas1" Visibility="Hidden" SizeChanged="Canvas1_SizeChanged" VerticalAlignment="Top" HorizontalAlignment="Left">
+							<Canvas x:Name="Canvas1" Visibility="{Binding Path=User.DriverLicense.IsDriverLicenseVis, UpdateSourceTrigger=PropertyChanged}" SizeChanged="Canvas1_SizeChanged" VerticalAlignment="Top" HorizontalAlignment="Left">
 								<Canvas.Style>
 									<Style TargetType="Canvas">
 										<Setter Property="Width" Value="{Binding ElementName=StatsLabelGrid, Path=ActualWidth}"/>

@@ -31,6 +31,8 @@ namespace BumSimulator.MainGame
 		public HpStat Hp { get; set; }
 		public FoodStat Food { get; set; }
 
+		public DriverLicenseStat DriverLicense { get; set; }
+
 		public ImgStat TopHead { get; set; }
 		public ImgStat Head { get; set; }
 		public ImgStat Tors { get; set; }
@@ -66,6 +68,7 @@ namespace BumSimulator.MainGame
 			this.Status = Status;
 			this.Educ = Educ;
 			Passport = new PassportStat(false);
+			DriverLicense = new DriverLicenseStat(false);
 		}
 
 		public void CheckLose()
