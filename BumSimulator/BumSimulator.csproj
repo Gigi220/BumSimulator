@@ -58,6 +58,7 @@
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Events\IEvent.cs" />
     <Compile Include="Settings\Settings.cs" />
+    <Compile Include="Stats\DriverLicenseStat.cs" />
     <Compile Include="Stats\EducStat.cs" />
     <Compile Include="Stats\ImageSourcesStat.cs" />
     <Compile Include="Stats\PassportStat.cs" />
