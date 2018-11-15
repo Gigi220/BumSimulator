@@ -203,5 +203,11 @@
   <ItemGroup>
     <Folder Include="Img\StaffsPart\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Images\compass.jpg" />
+    <Resource Include="Img\Images\map.jpg" />
+    <Resource Include="Img\Images\passport.jpg" />
+    <Resource Include="Img\Images\passport2.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

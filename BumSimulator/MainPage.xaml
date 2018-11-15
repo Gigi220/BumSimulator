@@ -54,400 +54,443 @@
 						</Grid>
 					</Grid>
 
-					<Grid Grid.Column="2" x:Name="PlayGrid">
-						<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-							<TabControl Height="{Binding ElementName=PlayGrid, Path=Height}" Visibility="Visible" IsEnabled="True">
-								<TabControl.Resources>
-									<Style TargetType="TabItem">
-										<Setter Property="Template" Value="{DynamicResource TabItemControlTemplate1}"/>
-									</Style>
-								</TabControl.Resources>
-								<TabControl.Template>
-									<ControlTemplate TargetType="TabControl">
-										<StackPanel Height="{TemplateBinding Height}">
-											<ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
-												<TabPanel x:Name="HeaderPanel"
+					<Grid Grid.Column="2">
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition Height="170"/>
+						</Grid.RowDefinitions>
+
+						<Grid Grid.Row="0" x:Name="PlayGrid" Margin="5">
+							<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+								<TabControl Height="{Binding ElementName=PlayGrid, Path=Height}" Visibility="Visible" IsEnabled="True">
+									<TabControl.Resources>
+										<Style TargetType="TabItem">
+											<Setter Property="Template" Value="{DynamicResource TabItemControlTemplate1}"/>
+										</Style>
+									</TabControl.Resources>
+									<TabControl.Template>
+										<ControlTemplate TargetType="TabControl">
+											<StackPanel Height="{TemplateBinding Height}">
+												<ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+													<TabPanel x:Name="HeaderPanel"
 														Panel.ZIndex ="1" 
 														KeyboardNavigation.TabIndex="1"
 														Grid.Column="0"
 														Grid.Row="0"
 														Margin="2,2,2,0"
 														IsItemsHost="true"/>
-											</ScrollViewer>
-											<ContentPresenter x:Name="PART_SelectedContentHost"
+												</ScrollViewer>
+												<ContentPresenter x:Name="PART_SelectedContentHost"
 												SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
 												Margin="{TemplateBinding Padding}"
 												ContentSource="SelectedContent"/>
-										</StackPanel>
-									</ControlTemplate>
-								</TabControl.Template>
-								<TabControl.Background>
-									<SolidColorBrush ></SolidColorBrush>
-								</TabControl.Background>
-								<TabItem Header="Обмінник" x:Name="MainGameTab">
-									<ContentControl>
-										<Grid>
-											<Grid.RowDefinitions>
-												<RowDefinition/>
-												<RowDefinition/>
-											</Grid.RowDefinitions>
-
-											<Grid x:Name="USDReceivingGrid" Grid.Row="0">
+											</StackPanel>
+										</ControlTemplate>
+									</TabControl.Template>
+									<TabControl.Background>
+										<SolidColorBrush ></SolidColorBrush>
+									</TabControl.Background>
+									<TabItem Header="Обмінник" x:Name="MainGameTab">
+										<ContentControl>
+											<Grid>
 												<Grid.RowDefinitions>
 													<RowDefinition/>
 													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
 												</Grid.RowDefinitions>
-												<Grid.ColumnDefinitions>
-													<ColumnDefinition/>
-													<ColumnDefinition/>
-												</Grid.ColumnDefinitions>
 
-												<Label x:Name="USDReceivingLabelName" Grid.Row="0" Grid.ColumnSpan="2" Template="{DynamicResource MainShowLabel}">Обмін валют</Label>
-												<Label x:Name="PriceUSDLabelName" Grid.Row="1" Grid.Column="0" Template="{DynamicResource ShowLabel}">Ціна за капусту:</Label>
+												<Grid x:Name="USDReceivingGrid" Grid.Row="0">
+													<Grid.RowDefinitions>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
+													<Grid.ColumnDefinitions>
+														<ColumnDefinition/>
+														<ColumnDefinition/>
+													</Grid.ColumnDefinitions>
 
-												<Label x:Name="PriceUSDLabelValue" Grid.Row="1" Grid.Column="1" Template="{DynamicResource ShowLabel}"
+													<Label x:Name="USDReceivingLabelName" Grid.Row="0" Grid.ColumnSpan="2" Template="{DynamicResource MainShowLabel}">Обмін валют</Label>
+													<Label x:Name="PriceUSDLabelName" Grid.Row="1" Grid.Column="0" Template="{DynamicResource ShowLabel}">Ціна за капусту:</Label>
+
+													<Label x:Name="PriceUSDLabelValue" Grid.Row="1" Grid.Column="1" Template="{DynamicResource ShowLabel}"
 										   Content="{Binding Path=USDPrice.Price, UpdateSourceTrigger=PropertyChanged}"></Label>
 
-												<ComboBox x:Name="USDCountSelling" Text="Count Bottles" Grid.Row="2" Grid.ColumnSpan="2" Style="{DynamicResource GGG}">
-													<ComboBoxItem Content="1"></ComboBoxItem>
-													<ComboBoxItem Content="5"></ComboBoxItem>
-													<ComboBoxItem Content="10"></ComboBoxItem>
-													<ComboBoxItem Content="25"></ComboBoxItem>
-													<ComboBoxItem Content="50"></ComboBoxItem>
-													<ComboBoxItem Content="100"></ComboBoxItem>
-												</ComboBox>
+													<ComboBox x:Name="USDCountSelling" Text="Count Bottles" Grid.Row="2" Grid.ColumnSpan="2" Style="{DynamicResource GGG}">
+														<ComboBoxItem Content="1"></ComboBoxItem>
+														<ComboBoxItem Content="5"></ComboBoxItem>
+														<ComboBoxItem Content="10"></ComboBoxItem>
+														<ComboBoxItem Content="25"></ComboBoxItem>
+														<ComboBoxItem Content="50"></ComboBoxItem>
+														<ComboBoxItem Content="100"></ComboBoxItem>
+													</ComboBox>
 
-												<Button x:Name="USDCountPassButton" Click="USDCountPassButton_Click" Grid.Row="3" Grid.Column="0" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Обмінять</Button>
-												<Button x:Name="USDAllPassButton" Click="USDAllPassButton_Click" Grid.Row="3" Grid.Column="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Обмінять всі</Button>
-											</Grid>
+													<Button x:Name="USDCountPassButton" Click="USDCountPassButton_Click" Grid.Row="3" Grid.Column="0" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Обмінять</Button>
+													<Button x:Name="USDAllPassButton" Click="USDAllPassButton_Click" Grid.Row="3" Grid.Column="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Обмінять всі</Button>
+												</Grid>
 
-											<Grid x:Name="BottlesReceivingGrid" Grid.Row="1">
-												<Grid.RowDefinitions>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-												</Grid.RowDefinitions>
-												<Grid.ColumnDefinitions>
-													<ColumnDefinition/>
-													<ColumnDefinition/>
-												</Grid.ColumnDefinitions>
+												<Grid x:Name="BottlesReceivingGrid" Grid.Row="1">
+													<Grid.RowDefinitions>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
+													<Grid.ColumnDefinitions>
+														<ColumnDefinition/>
+														<ColumnDefinition/>
+													</Grid.ColumnDefinitions>
 
-												<Label x:Name="BottlesReceivingLabelName" Grid.Row="0" Grid.ColumnSpan="2" Template="{DynamicResource MainShowLabel}">Прийом бутилок</Label>
-												<Label x:Name="PriceBottleLabelName" Grid.Row="1" Grid.Column="0" Template="{DynamicResource ShowLabel}">Ціна за бутилку:</Label>
+													<Label x:Name="BottlesReceivingLabelName" Grid.Row="0" Grid.ColumnSpan="2" Template="{DynamicResource MainShowLabel}">Прийом бутилок</Label>
+													<Label x:Name="PriceBottleLabelName" Grid.Row="1" Grid.Column="0" Template="{DynamicResource ShowLabel}">Ціна за бутилку:</Label>
 
-												<Label x:Name="PriceBottleLabelValue" Grid.Row="1" Grid.Column="1" Template="{DynamicResource ShowLabel}"
+													<Label x:Name="PriceBottleLabelValue" Grid.Row="1" Grid.Column="1" Template="{DynamicResource ShowLabel}"
 										   Content="{Binding Path=BottlePrice.Price.Count, UpdateSourceTrigger=PropertyChanged}" Margin="5,0,-5,0"></Label>
 
-												<ComboBox x:Name="BottlesCountSelling" Text="Count Bottles" Grid.Row="2" Grid.ColumnSpan="2" Style="{DynamicResource GGG}">
-													<ComboBoxItem Content="1"></ComboBoxItem>
-													<ComboBoxItem Content="5"></ComboBoxItem>
-													<ComboBoxItem Content="10"></ComboBoxItem>
-													<ComboBoxItem Content="25"></ComboBoxItem>
-													<ComboBoxItem Content="50"></ComboBoxItem>
-													<ComboBoxItem Content="100"></ComboBoxItem>
-												</ComboBox>
+													<ComboBox x:Name="BottlesCountSelling" Text="Count Bottles" Grid.Row="2" Grid.ColumnSpan="2" Style="{DynamicResource GGG}">
+														<ComboBoxItem Content="1"></ComboBoxItem>
+														<ComboBoxItem Content="5"></ComboBoxItem>
+														<ComboBoxItem Content="10"></ComboBoxItem>
+														<ComboBoxItem Content="25"></ComboBoxItem>
+														<ComboBoxItem Content="50"></ComboBoxItem>
+														<ComboBoxItem Content="100"></ComboBoxItem>
+													</ComboBox>
 
-												<Button x:Name="BottlesCountPassButton" Click="BottlesCountPassButton_Click" Grid.Row="3" Grid.Column="0" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Здать</Button>
-												<Button x:Name="BottlesAllPassButton" Click="BottlesAllPassButton_Click" Grid.Row="3" Grid.Column="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Здать всі</Button>
+													<Button x:Name="BottlesCountPassButton" Click="BottlesCountPassButton_Click" Grid.Row="3" Grid.Column="0" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Здать</Button>
+													<Button x:Name="BottlesAllPassButton" Click="BottlesAllPassButton_Click" Grid.Row="3" Grid.Column="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Здать всі</Button>
+												</Grid>
 											</Grid>
-										</Grid>
-									</ContentControl>
-								</TabItem>
-								<TabItem Header="Їжа" x:Name="FoodMoodGameTab">
-									<ContentControl>
-										<Grid>
-											<Grid.RowDefinitions>
-												<RowDefinition/>
-												<RowDefinition/>
-											</Grid.RowDefinitions>
-
-											<Grid Grid.Row="0">
+										</ContentControl>
+									</TabItem>
+									<TabItem Header="Їжа" x:Name="FoodMoodGameTab">
+										<ContentControl>
+											<Grid>
 												<Grid.RowDefinitions>
-													<RowDefinition Height="45"/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
 													<RowDefinition/>
 													<RowDefinition/>
 												</Grid.RowDefinitions>
 
-												<Label x:Name="FoodLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Їжа</Label>
-												<Button x:Name="Food0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Їсти з мусорніка (0)</Button>
-												<Button x:Name="Food1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Хот-Дог (100)</Button>
-												<Button x:Name="Food2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Кафе (500)</Button>
-												<Button x:Name="Food3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Закупиться в магазині (3000)</Button>
-												<Button x:Name="Food4Button" Grid.Row="5" Template="{DynamicResource PassButton}">Одружитись (Family)</Button>
-											</Grid>
+												<Grid Grid.Row="0">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
 
-											<Grid Grid.Row="1">
+													<Label x:Name="FoodLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Їжа</Label>
+													<Button x:Name="Food0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Їсти з мусорніка (0)</Button>
+													<Button x:Name="Food1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Хот-Дог (100)</Button>
+													<Button x:Name="Food2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Кафе (500)</Button>
+													<Button x:Name="Food3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Закупиться в магазині (3000)</Button>
+													<Button x:Name="Food4Button" Grid.Row="5" Template="{DynamicResource PassButton}">Одружитись (Family)</Button>
+												</Grid>
+
+												<Grid Grid.Row="1">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
+
+													<Label x:Name="MoodLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Настрій</Label>
+													<Button x:Name="Mood0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Пиво (50)</Button>
+													<Button x:Name="Mood1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Водка (200)</Button>
+													<Button x:Name="Mood2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Віскі (500)</Button>
+													<Button x:Name="Mood3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Brandy XO (1500)</Button>
+													<Button x:Name="Mood4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Пить в барі (1000 капусти/день)</Button>
+												</Grid>
+											</Grid>
+										</ContentControl>
+									</TabItem>
+									<TabItem Header="Двір" x:Name="YardGameTab">
+										<ContentControl>
+											<Grid>
 												<Grid.RowDefinitions>
-													<RowDefinition Height="45"/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
 													<RowDefinition/>
 													<RowDefinition/>
 												</Grid.RowDefinitions>
 
-												<Label x:Name="MoodLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Настрій</Label>
-												<Button x:Name="Mood0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Пиво (50)</Button>
-												<Button x:Name="Mood1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Водка (200)</Button>
-												<Button x:Name="Mood2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Віскі (500)</Button>
-												<Button x:Name="Mood3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Brandy XO (1500)</Button>
-												<Button x:Name="Mood4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Пить в барі (1000 капусти/день)</Button>
-											</Grid>
-										</Grid>
-									</ContentControl>
-								</TabItem>
-								<TabItem Header="Двір" x:Name="YardGameTab">
-									<ContentControl>
-										<Grid>
-											<Grid.RowDefinitions>
-												<RowDefinition/>
-												<RowDefinition/>
-											</Grid.RowDefinitions>
+												<Grid Grid.Row="0">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
 
-											<Grid Grid.Row="0">
+													<Label x:Name="SneakingLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Бомжувать</Label>
+													<Button x:Name="Sneaking0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">В дворі</Button>
+													<Button x:Name="Sneaking1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">В переході</Button>
+													<Button x:Name="Sneaking2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Біля магазину</Button>
+													<Button x:Name="Sneaking3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">В центрі</Button>
+												</Grid>
+
+												<Grid Grid.Row="1">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
+
+													<Label x:Name="LiveByBeggingLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Побори</Label>
+													<Button x:Name="LiveByBegging0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Шукать монети на вулиці</Button>
+													<Button x:Name="LiveByBegging1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Наїхать на собутильніка</Button>
+													<Button x:Name="LiveByBegging2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Таксувать</Button>
+													<Button x:Name="LiveByBegging3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Грабануть прохожого</Button>
+													<Button x:Name="LiveByBegging4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Ограбить банк</Button>
+												</Grid>
+											</Grid>
+										</ContentControl>
+									</TabItem>
+									<TabItem Header="Життя" x:Name="HealthGameTab">
+										<ContentControl>
+											<Grid>
 												<Grid.RowDefinitions>
-													<RowDefinition Height="45"/>
-													<RowDefinition/>
-													<RowDefinition/>
 													<RowDefinition/>
 													<RowDefinition/>
 												</Grid.RowDefinitions>
 
-												<Label x:Name="SneakingLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Бомжувать</Label>
-												<Button x:Name="Sneaking0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">В дворі</Button>
-												<Button x:Name="Sneaking1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">В переході</Button>
-												<Button x:Name="Sneaking2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Біля магазину</Button>
-												<Button x:Name="Sneaking3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">В центрі</Button>
-											</Grid>
+												<Grid Grid.Row="0">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
 
-											<Grid Grid.Row="1">
+													<Label x:Name="HealthyLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Підняти Здоров'я</Label>
+													<Button x:Name="Healthy0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Таблетки з мусорніка (0)</Button>
+													<Button x:Name="Healthy1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Лікуваться у бабкі (150)</Button>
+													<Button x:Name="Healthy2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Справжній лікар (500)</Button>
+													<Button x:Name="Healthy3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Нормальна клініка (3000)</Button>
+													<Button x:Name="Healthy4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Лікуватись за кордоном (50000)</Button>
+												</Grid>
+
+												<Grid Grid.Row="1">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
+
+													<Label x:Name="SportLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Займатись спортом</Label>
+													<Button x:Name="Sport0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Зробить пробіжку</Button>
+													<Button x:Name="Sport1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Записатись в спортзал (15000 шекелів/місяць)</Button>
+													<Button x:Name="Sport2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Власний тренер (2000 капусти/місяць)</Button>
+												</Grid>
+											</Grid>
+										</ContentControl>
+									</TabItem>
+									<TabItem Header="Магазин Одягу" x:Name="StaffShopGameTab">
+										<ContentControl>
+											<Grid>
 												<Grid.RowDefinitions>
-													<RowDefinition Height="45"/>
+													<RowDefinition Height="320"/>
 													<RowDefinition/>
+												</Grid.RowDefinitions>
+
+												<Grid Grid.Row="0">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition />
+													</Grid.RowDefinitions>
+
+													<Label x:Name="StaffShopName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Взуття</Label>
+													<Button x:Name="StaffShop0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купить червоні кросівки (400)</Button>
+												</Grid>
+											</Grid>
+										</ContentControl>
+									</TabItem>
+									<TabItem Header="Власність" x:Name="PurchaseGameTab">
+										<ContentControl>
+
+											<Grid>
+												<Grid.RowDefinitions>
+													<RowDefinition Height="320"/>
 													<RowDefinition/>
+												</Grid.RowDefinitions>
+
+												<Grid Grid.Row="0">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
+
+													<Label x:Name="RealtyLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Власність</Label>
+													<Button x:Name="Realty0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купить палатку (400)</Button>
+													<Button x:Name="Realty1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Знімати кімнату (15000 шекелів/місяць)</Button>
+													<Button x:Name="Realty2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Ипотека (40000 шекелів/місяць)</Button>
+													<Button x:Name="Realty3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити квартиру (300000 капусти)</Button>
+													<Button x:Name="Realty4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити офіс (1 млн капусти)</Button>
+													<Button x:Name="Realty5Button" Grid.Row="6" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити Котедж (3 млн капусти)</Button>
+													<Button x:Name="Realty6Button" Grid.Row="7" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити Віллу (5 млн капусти)</Button>
+												</Grid>
+
+												<Grid Grid.Row="1">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
+
+													<Label x:Name="TransportLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Транспорт</Label>
+													<Button x:Name="Transport0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купить кросівкі (2000)</Button>
+													<Button x:Name="Transport1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити велосипеда (10000 шекелів)</Button>
+													<Button x:Name="Transport2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити ВАЗ (2000 капусти)</Button>
+													<Button x:Name="Transport3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити спорткар (50000 капусти)</Button>
+													<Button x:Name="Transport4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити вертоліт (600000 капусти)</Button>
+													<Button x:Name="Transport5Button" Grid.Row="6" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити яхту (2 млн капусти)</Button>
+												</Grid>
+											</Grid>
+										</ContentControl>
+									</TabItem>
+									<TabItem Header="Робота" x:Name="WorkGameTab">
+										<ContentControl>
+											<Grid>
+												<Grid.RowDefinitions>
+													<RowDefinition Height="320"/>
 													<RowDefinition/>
+												</Grid.RowDefinitions>
+
+												<Grid Grid.Row="0">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
+
+													<Label x:Name="WorkLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Робота</Label>
+													<Button x:Name="Work0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Мити машини</Button>
+													<Button x:Name="Work1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Замітати двори</Button>
+													<Button x:Name="Work2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Працювати сантехніком</Button>
+													<Button x:Name="Work3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Вкалувать на заводі</Button>
+													<Button x:Name="Work4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Працювати в офісі</Button>
+													<Button x:Name="Work5Button" Grid.Row="6" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Управляти компанією</Button>
+													<Button x:Name="Work6Button" Grid.Row="7" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Заробляти на біржі</Button>
+												</Grid>
+											</Grid>
+										</ContentControl>
+									</TabItem>
+									<TabItem Header="Освіта" x:Name="EducationGameTab">
+										<ContentControl>
+											<Grid>
+												<Grid.RowDefinitions>
 													<RowDefinition/>
 													<RowDefinition/>
 												</Grid.RowDefinitions>
 
-												<Label x:Name="LiveByBeggingLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Побори</Label>
-												<Button x:Name="LiveByBegging0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Шукать монети на вулиці</Button>
-												<Button x:Name="LiveByBegging1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Наїхать на собутильніка</Button>
-												<Button x:Name="LiveByBegging2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Таксувать</Button>
-												<Button x:Name="LiveByBegging3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Грабануть прохожого</Button>
-												<Button x:Name="LiveByBegging4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Ограбить банк</Button>
-											</Grid>
-										</Grid>
-									</ContentControl>
-								</TabItem>
-								<TabItem Header="Життя" x:Name="HealthGameTab">
-									<ContentControl>
-										<Grid>
-											<Grid.RowDefinitions>
-												<RowDefinition/>
-												<RowDefinition/>
-											</Grid.RowDefinitions>
+												<Grid Grid.Row="0">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
 
-											<Grid Grid.Row="0">
+													<Label x:Name="EducationLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Вчитись</Label>
+													<Button x:Name="Education0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Вивчити табличку множення (150 шекелів)</Button>
+													<Button x:Name="Education1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Закінчити школу (5000 шекелів)</Button>
+													<Button x:Name="Education2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Закінчити ПТУ (25000 шекелів)</Button>
+													<Button x:Name="Education3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Закінчити ВУЗ (200000 шекелів)</Button>
+													<Button x:Name="Education4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Вчитись за кордоном (1 млн. капусти)</Button>
+												</Grid>
+
+												<Grid Grid.Row="1">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
+
+													<Label x:Name="RaitingLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Рейтинг</Label>
+													<Button x:Name="Raiting0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Затусити в клубі (1000 шекелів)</Button>
+													<Button x:Name="Raiting1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити костюм (50000 шекелів)</Button>
+													<Button x:Name="Raiting2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Засвітитись на TV (150000 шекелів)</Button>
+													<Button x:Name="Raiting3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Зняти рекламу(10000 капусти)</Button>
+													<Button x:Name="Raiting4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити конкурентів (5 млн. капусти)</Button>
+												</Grid>
+											</Grid>
+										</ContentControl>
+									</TabItem>
+									<TabItem Header="Політіка" x:Name="PolitGameTab">
+										<ContentControl>
+											<Grid>
 												<Grid.RowDefinitions>
-													<RowDefinition Height="45"/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
 													<RowDefinition/>
 													<RowDefinition/>
 												</Grid.RowDefinitions>
 
-												<Label x:Name="HealthyLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Підняти Здоров'я</Label>
-												<Button x:Name="Healthy0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Таблетки з мусорніка (0)</Button>
-												<Button x:Name="Healthy1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Лікуваться у бабкі (150)</Button>
-												<Button x:Name="Healthy2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Справжній лікар (500)</Button>
-												<Button x:Name="Healthy3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Нормальна клініка (3000)</Button>
-												<Button x:Name="Healthy4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Лікуватись за кордоном (50000)</Button>
+												<Grid Grid.Row="0">
+													<Grid.RowDefinitions>
+														<RowDefinition Height="45"/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+														<RowDefinition/>
+													</Grid.RowDefinitions>
+
+													<Label x:Name="CityCouncilLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Соціальні послуги</Label>
+													<Button x:Name="CityCouncil0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Отримати паспорт</Button>
+													<Button x:Name="CityCouncil1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Отримати посвідчення безробітного</Button>
+													<Button x:Name="CityCouncil2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Отримати посвідчення інваліда</Button>
+													<Button x:Name="CityCouncil3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Отримати посвідчення водія</Button>
+												</Grid>
 											</Grid>
+										</ContentControl>
+									</TabItem>
+								</TabControl>
+							</ScrollViewer>
+						</Grid>
 
-											<Grid Grid.Row="1">
-												<Grid.RowDefinitions>
-													<RowDefinition Height="45"/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-												</Grid.RowDefinitions>
+						<Grid Grid.Row="1">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition/>
+								<ColumnDefinition/>
+							</Grid.ColumnDefinitions>
 
-												<Label x:Name="SportLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Займатись спортом</Label>
-												<Button x:Name="Sport0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Зробить пробіжку</Button>
-												<Button x:Name="Sport1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Записатись в спортзал (15000 шекелів/місяць)</Button>
-												<Button x:Name="Sport2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Власний тренер (2000 капусти/місяць)</Button>
-											</Grid>
-										</Grid>
-									</ContentControl>
-								</TabItem>
-								<TabItem Header="Власність" x:Name="PurchaseGameTab">
-									<ContentControl>
-
-										<Grid>
-											<Grid.RowDefinitions>
-												<RowDefinition Height="320"/>
-												<RowDefinition/>
-											</Grid.RowDefinitions>
-
-											<Grid Grid.Row="0">
-												<Grid.RowDefinitions>
-													<RowDefinition Height="45"/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-												</Grid.RowDefinitions>
-
-												<Label x:Name="RealtyLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Власність</Label>
-												<Button x:Name="Realty0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купить палатку (400)</Button>
-												<Button x:Name="Realty1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Знімати кімнату (15000 шекелів/місяць)</Button>
-												<Button x:Name="Realty2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Ипотека (40000 шекелів/місяць)</Button>
-												<Button x:Name="Realty3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити квартиру (300000 капусти)</Button>
-												<Button x:Name="Realty4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити офіс (1 млн капусти)</Button>
-												<Button x:Name="Realty5Button" Grid.Row="6" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити Котедж (3 млн капусти)</Button>
-												<Button x:Name="Realty6Button" Grid.Row="7" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити Віллу (5 млн капусти)</Button>
-											</Grid>
-
-											<Grid Grid.Row="1">
-												<Grid.RowDefinitions>
-													<RowDefinition Height="45"/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-												</Grid.RowDefinitions>
-
-												<Label x:Name="TransportLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Транспорт</Label>
-												<Button x:Name="Transport0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купить кросівкі (2000)</Button>
-												<Button x:Name="Transport1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити велосипеда (10000 шекелів)</Button>
-												<Button x:Name="Transport2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити ВАЗ (2000 капусти)</Button>
-												<Button x:Name="Transport3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити спорткар (50000 капусти)</Button>
-												<Button x:Name="Transport4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити вертоліт (600000 капусти)</Button>
-												<Button x:Name="Transport5Button" Grid.Row="6" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити яхту (2 млн капусти)</Button>
-											</Grid>
-										</Grid>
-									</ContentControl>
-								</TabItem>
-								<TabItem Header="Робота" x:Name="WorkGameTab">
-									<ContentControl>
-										<Grid>
-											<Grid.RowDefinitions>
-												<RowDefinition Height="320"/>
-												<RowDefinition/>
-											</Grid.RowDefinitions>
-
-											<Grid Grid.Row="0">
-												<Grid.RowDefinitions>
-													<RowDefinition Height="45"/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-												</Grid.RowDefinitions>
-
-												<Label x:Name="WorkLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Робота</Label>
-												<Button x:Name="Work0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Мити машини</Button>
-												<Button x:Name="Work1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Замітати двори</Button>
-												<Button x:Name="Work2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Працювати сантехніком</Button>
-												<Button x:Name="Work3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Вкалувать на заводі</Button>
-												<Button x:Name="Work4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Працювати в офісі</Button>
-												<Button x:Name="Work5Button" Grid.Row="6" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Управляти компанією</Button>
-												<Button x:Name="Work6Button" Grid.Row="7" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Заробляти на біржі</Button>
-											</Grid>
-										</Grid>
-									</ContentControl>
-								</TabItem>
-								<TabItem Header="Освіта" x:Name="EducationGameTab">
-									<ContentControl>
-										<Grid>
-											<Grid.RowDefinitions>
-												<RowDefinition/>
-												<RowDefinition/>
-											</Grid.RowDefinitions>
-
-											<Grid Grid.Row="0">
-												<Grid.RowDefinitions>
-													<RowDefinition Height="45"/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-												</Grid.RowDefinitions>
-
-												<Label x:Name="EducationLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Вчитись</Label>
-												<Button x:Name="Education0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Вивчити табличку множення (150 шекелів)</Button>
-												<Button x:Name="Education1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Закінчити школу (5000 шекелів)</Button>
-												<Button x:Name="Education2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Закінчити ПТУ (25000 шекелів)</Button>
-												<Button x:Name="Education3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Закінчити ВУЗ (200000 шекелів)</Button>
-												<Button x:Name="Education4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Вчитись за кордоном (1 млн. капусти)</Button>
-											</Grid>
-
-											<Grid Grid.Row="1">
-												<Grid.RowDefinitions>
-													<RowDefinition Height="45"/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-												</Grid.RowDefinitions>
-
-												<Label x:Name="RaitingLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Рейтинг</Label>
-												<Button x:Name="Raiting0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Затусити в клубі (1000 шекелів)</Button>
-												<Button x:Name="Raiting1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити костюм (50000 шекелів)</Button>
-												<Button x:Name="Raiting2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Засвітитись на TV (150000 шекелів)</Button>
-												<Button x:Name="Raiting3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Зняти рекламу(10000 капусти)</Button>
-												<Button x:Name="Raiting4Button" Grid.Row="5" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Купити конкурентів (5 млн. капусти)</Button>
-											</Grid>
-										</Grid>
-									</ContentControl>
-								</TabItem>
-								<TabItem Header="Політіка" x:Name="PolitGameTab">
-									<ContentControl>
-										<Grid>
-											<Grid.RowDefinitions>
-												<RowDefinition/>
-												<RowDefinition/>
-											</Grid.RowDefinitions>
-
-											<Grid Grid.Row="0">
-												<Grid.RowDefinitions>
-													<RowDefinition Height="45"/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-													<RowDefinition/>
-												</Grid.RowDefinitions>
-
-												<Label x:Name="CityCouncilLabelName" Grid.Row="0" Template="{DynamicResource MainShowLabel}">Соціальні послуги</Label>
-												<Button x:Name="CityCouncil0Button" Grid.Row="1" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Отримати паспорт</Button>
-												<Button x:Name="CityCouncil1Button" Grid.Row="2" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Отримати посвідчення безробітного</Button>
-												<Button x:Name="CityCouncil2Button" Grid.Row="3" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Отримати посвідчення інваліда</Button>
-												<Button x:Name="CityCouncil3Button" Grid.Row="4" Style="{DynamicResource StylePassButton}" Template="{DynamicResource PassButton}">Отримати посвідчення водія</Button>
-											</Grid>
-										</Grid>
-									</ContentControl>
-								</TabItem>
-							</TabControl>
-						</ScrollViewer>
+							<Grid Grid.Column="1" x:Name="MapGrid">
+								<Button
+										Template="{DynamicResource ElipseButton}">
+									<Image Source="Img\Images\compass.jpg" x:Name="CompassImg"/>
+								</Button>
+							</Grid>
+						</Grid>
+						
 					</Grid>
+					
 
 					<Grid Grid.Row="0" Grid.Column="0">
 						<Grid.RowDefinitions>

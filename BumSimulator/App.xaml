@@ -123,7 +123,7 @@
 		</ControlTemplate>
 
 		<ControlTemplate x:Key="TabItemControlTemplate1" TargetType="{x:Type TabItem}" >
-			<Grid SnapsToDevicePixels="True" Width="65" Margin="5,0,0,0">
+			<Grid SnapsToDevicePixels="True" Width="{TemplateBinding Width}" Margin="5,0,0,0">
 				<Border CornerRadius="5" x:Name="Bd" BorderBrush="#f5f5f5" Background="#c7c6c2" BorderThickness="1" Padding="{TemplateBinding Padding}">
 					<ContentPresenter x:Name="Content" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}"
 									  ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header"
@@ -131,6 +131,14 @@
 				</Border>
 			</Grid>
 
+		</ControlTemplate>
+
+		<ControlTemplate x:Key="ElipseButton" TargetType="Button">
+			<Border Background="#E7E7E7" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+				<ContentControl Content="{TemplateBinding Content}">
+
+				</ContentControl>
+			</Border>
 		</ControlTemplate>
 
 		<SolidColorBrush x:Key="StandardBorderBrush" Color="#888" />
