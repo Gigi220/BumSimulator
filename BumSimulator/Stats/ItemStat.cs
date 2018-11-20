@@ -16,17 +16,20 @@ namespace BumSimulator.Stats
 	class Item : INotifyPropertyChanged
 	{
 		public string Name { get; set; }
-		public ImgStat Image { get; set; }
+		public ImageSource Image { get; set; }
 
 		public Item()
 		{
 			Name = null;
-			Image = new ImgStat();
+			Image = null;
 		}
-		public Item(string Name, ImgStat Image)
+		public Item(ImageSource Image)
+		{
+			this.Image = Image;
+		}
+		public Item(string Name, ImageSource Image) : this(Image)
 		{
 			this.Name = Name;
-			this.Image = Image;
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -95,6 +98,10 @@ namespace BumSimulator.Stats
 						if (Items.Contains(x))
 						{
 							Items.Remove(x);
+							if(SelectedItem == x)
+							{
+								SelectedItem = Items[0];
+							}
 							return true;
 						}
 					}

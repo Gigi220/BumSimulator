@@ -35,12 +35,12 @@ namespace BumSimulator.MainGame
 
 		public ItemStat Bottom { get; set; }
 
-		public ImgStat TopHead { get; set; }
-		public ImgStat Head { get; set; }
-		public ImgStat Tors { get; set; }
-		public ImgStat LeftHand { get; set; }
-		public ImgStat RightHand { get; set; }
-		public ImgStat Pants { get; set; }
+		//public ImgStat TopHead { get; set; }
+		//public ImgStat Head { get; set; }
+		//public ImgStat Tors { get; set; }
+		//public ImgStat LeftHand { get; set; }
+		//public ImgStat RightHand { get; set; }
+		//public ImgStat Pants { get; set; }
 		//public ImgStat Bottom { get; set; }
 
 

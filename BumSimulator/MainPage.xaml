@@ -47,7 +47,7 @@
 									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.RightHand.ImageSource}"/>
 
 									<Image Grid.Column="1" Grid.Row="3" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.Pants.ImageSource}"/>
-									<Image Grid.Column="1" Grid.Row="4" Canvas.Left="165" Canvas.Top="430" Source="{Binding Path=User.Bottom.SelectedItem.Image.ImageSource}"/>
+									<Image Grid.Column="1" Grid.Row="4" Canvas.Left="165" Canvas.Top="430" Source="{Binding Path=User.Bottom.SelectedItem.Image}"/>
 								</Canvas>
 
 							</Grid>
