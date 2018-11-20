@@ -116,7 +116,7 @@ namespace BumSimulator.Stats
         void CheckLoseEvent(TimeStat Time)
         {
             TimeStat loseday = new TimeStat(Time);
-            loseday.AddDays(Settings_.daysDied);
+            loseday.AddDate(Settings_.daysDied);
             System.Windows.MessageBox.Show(Settings_.warningMessege);
             while (true)
             {

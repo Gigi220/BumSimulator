@@ -47,7 +47,7 @@
 									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.RightHand.ImageSource}"/>
 
 									<Image Grid.Column="1" Grid.Row="3" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.Pants.ImageSource}"/>
-									<Image Grid.Column="1" Grid.Row="4" Canvas.Left="165" Canvas.Top="430" Source="{Binding Path=User.Bottom.ImageSource}"/>
+									<Image Grid.Column="1" Grid.Row="4" Canvas.Left="165" Canvas.Top="430" Source="{Binding Path=User.Bottom.SelectedItem.Image.ImageSource}"/>
 								</Canvas>
 
 							</Grid>
@@ -482,7 +482,7 @@
 							</Grid.ColumnDefinitions>
 
 							<Grid Grid.Column="1" x:Name="MapGrid">
-								<Button
+								<Button Click="Button_Click"
 										Template="{DynamicResource ElipseButton}">
 									<Image Source="Img\Images\compass.jpg" x:Name="CompassImg"/>
 								</Button>

@@ -67,6 +67,7 @@
     <Compile Include="Stats\RaitingStat.cs" />
     <Compile Include="Stats\TimeStat.cs" />
     <Compile Include="Stats\TransportStat.cs" />
+    <Compile Include="Stats\ItemStat.cs" />
     <Compile Include="Stats\Wares\Ability.cs" />
     <Compile Include="MainGame\Game.cs" />
     <Compile Include="MainGame\User.cs" />

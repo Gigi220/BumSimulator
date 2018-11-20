@@ -37,14 +37,14 @@ namespace BumSimulator.Stats
                     }
                     return tmp;
                 }
-                return ETransport.WithoutShoes;
+                return ETransport.None;
 			}
 		}
 
 		public TransportStat()
 		{
 			Transports = new List<ETransport>();
-			Transports.Add(ETransport.WithoutShoes);
+			Transports.Add(ETransport.None);
 		}
 		public TransportStat(ETransport transport)
 		{

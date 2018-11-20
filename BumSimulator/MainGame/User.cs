@@ -33,13 +33,15 @@ namespace BumSimulator.MainGame
 
 		public DriverLicenseStat DriverLicense { get; set; }
 
+		public ItemStat Bottom { get; set; }
+
 		public ImgStat TopHead { get; set; }
 		public ImgStat Head { get; set; }
 		public ImgStat Tors { get; set; }
 		public ImgStat LeftHand { get; set; }
 		public ImgStat RightHand { get; set; }
 		public ImgStat Pants { get; set; }
-		public ImgStat Bottom { get; set; }
+		//public ImgStat Bottom { get; set; }
 
 
 		public User()
@@ -82,7 +84,6 @@ namespace BumSimulator.MainGame
 		public void MakeMove()
 		{
             UIControls.PropertyBackground.Background = new ImageBrush(new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\Backgrounds\" + Properties.HighestProperty.ToString() + ".jpg"))));
-			Times.AddDays(1);
 		}
 		async void ChangeSeason(Grid grid)
 		{

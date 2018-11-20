@@ -199,8 +199,8 @@ namespace BumSimulator.Stats.Valutas
         void CheckLoseEvent(TimeStat Time)
         {
             TimeStat loseday = new TimeStat(Time);
-            loseday.AddDays(Settings_.daysDied);
-            System.Windows.MessageBox.Show(Settings_.warningMessege);
+			loseday.AddDate(Settings_.daysDied);
+			System.Windows.MessageBox.Show(Settings_.warningMessege);
             while (true)
             {
                 if (Count > 0)
@@ -326,8 +326,8 @@ namespace BumSimulator.Stats.Valutas
         void CheckLoseEvent(TimeStat Time)
         {
             TimeStat loseday = new TimeStat(Time);
-            loseday.AddDays(Settings_.daysDied);
-            System.Windows.MessageBox.Show(Settings_.warningMessege);
+			loseday.AddDate(Settings_.daysDied);
+			System.Windows.MessageBox.Show(Settings_.warningMessege);
             while (true)
             {
                 if (Count > 0)
