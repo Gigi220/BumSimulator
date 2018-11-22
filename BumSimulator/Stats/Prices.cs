@@ -35,7 +35,7 @@ namespace BumSimulator.Stats
 			Price = price;
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is BottlePrice)
 			{
@@ -59,7 +59,7 @@ namespace BumSimulator.Stats
 			}
 			return false;
 		}
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is BottlePrice)
 			{
@@ -84,7 +84,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool Is(IStat BottlesStat)
+		public bool Is(IObject BottlesStat)
 		{
 			if (BottlesStat is BottlePrice)
 			{
@@ -148,7 +148,7 @@ namespace BumSimulator.Stats
 			Price = price;
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is USDPrice)
 			{
@@ -162,7 +162,7 @@ namespace BumSimulator.Stats
 			}
 			return false;
 		}
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is USDPrice)
 			{
@@ -178,7 +178,7 @@ namespace BumSimulator.Stats
 		}
 		
 
-		public bool Is(IStat BottlesStat)
+		public bool Is(IObject BottlesStat)
 		{
 			if (BottlesStat is USDPrice)
 			{

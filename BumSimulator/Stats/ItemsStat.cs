@@ -15,7 +15,7 @@ using BumSimulator.Enums;
 
 namespace BumSimulator.Stats
 {
-	class Item : INotifyPropertyChanged
+	class Item : IObject
 	{
 		public EItemIdentify ID { get; set; }
 		public string Name { get; set; }
@@ -79,7 +79,7 @@ namespace BumSimulator.Stats
 			this.MainID = MainID;
 		}
 
-		public virtual bool PositiveEffect(IStat otherStat)
+		public virtual bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is ItemsStat)
 			{
@@ -108,7 +108,7 @@ namespace BumSimulator.Stats
 			}
 			return false;
 		}
-		public virtual bool NegativeEffect(IStat otherStat)
+		public virtual bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is ItemsStat)
 			{
@@ -146,7 +146,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public virtual bool Is(IStat ItemsStat)
+		public virtual bool Is(IObject ItemsStat)
 		{
 			if (ItemsStat is ItemsStat)
 			{

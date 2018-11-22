@@ -27,7 +27,7 @@ namespace BumSimulator.Stats
 			Count = count;
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is BottlesStat)
 			{
@@ -36,7 +36,7 @@ namespace BumSimulator.Stats
 			}
 			return false;
 		}
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is BottlesStat)
 			{
@@ -46,7 +46,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool Is(IStat BottlesStat)
+		public bool Is(IObject BottlesStat)
 		{
 			if (BottlesStat is BottlesStat)
 			{

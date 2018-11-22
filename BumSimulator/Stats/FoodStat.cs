@@ -46,7 +46,7 @@ namespace BumSimulator.Stats
 			Points = points;
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is FoodStat)
 			{
@@ -66,7 +66,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is FoodStat)
 			{
@@ -86,7 +86,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool Is(IStat FoodStat)
+		public bool Is(IObject FoodStat)
 		{
 			if (FoodStat is FoodStat)
 			{

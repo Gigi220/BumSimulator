@@ -56,7 +56,7 @@ namespace BumSimulator.Stats
 			Transports = new List<ETransport>(transports);
         }
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is TransportStat)
 			{
@@ -76,7 +76,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is TransportStat)
 			{
@@ -96,7 +96,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool Is(IStat TransportStat)
+		public bool Is(IObject TransportStat)
 		{
 			if (TransportStat is TransportStat)
 			{
