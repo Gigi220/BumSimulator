@@ -51,15 +51,15 @@ namespace BumSimulator
 			Game = new Game(new User("Jack", new TimeStat(), new Valutes(new UAH(2000000), new USD(5000000)), new BottlesStat(20), new TransportStat(),
 				new PropertyStat(), new RaitingStat(0), new StatusStat(Enums.EStatus.Homeless), new EducStat(), new MoodStat(50), new HpStat(50), new FoodStat(50)));
 
-			Game.User.TopHead = new ItemsStat(EItemIdentify.TopHead, new Item(EItemIdentify.TopHead, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\TopHead\Male\TopHead.png")))));
-			Game.User.Head = new ItemsStat(EItemIdentify.Head, new Item(EItemIdentify.Head, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Head\Male\Head.png")))));
-			Game.User.Tors = new ItemsStat(EItemIdentify.Tors, new Item(EItemIdentify.Tors, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Tors\Male\Tors.png")))));
+			Game.User.TopHead = new ItemsStat(EItemIdentify.TopHead, new Item(EItemIdentify.TopHead, "0000", "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\TopHead\Male\TopHead.png")))));
+			Game.User.Head = new ItemsStat(EItemIdentify.Head, new Item(EItemIdentify.Head, "0000", "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Head\Male\Head.png")))));
+			Game.User.Tors = new ItemsStat(EItemIdentify.Tors, new Item(EItemIdentify.Tors, "0000", "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Tors\Male\Tors.png")))));
 
-			Game.User.LeftHand = new ItemsStat(EItemIdentify.LeftHand, new Item(EItemIdentify.LeftHand, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\LeftHand\Male\LeftHand.png")))));
-			Game.User.RightHand = new ItemsStat(EItemIdentify.RightHand, new Item(EItemIdentify.RightHand, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\RightHand\Male\RightHand.png")))));
+			Game.User.LeftHand = new ItemsStat(EItemIdentify.LeftHand, new Item(EItemIdentify.LeftHand, "0000", "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\LeftHand\Male\LeftHand.png")))));
+			Game.User.RightHand = new ItemsStat(EItemIdentify.RightHand, new Item(EItemIdentify.RightHand, "0000", "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\RightHand\Male\RightHand.png")))));
 
-			Game.User.Pants = new ItemsStat(EItemIdentify.Pants, new Item(EItemIdentify.Pants, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Pants\Male\Pants.png")))));
-			Game.User.Bottom = new ItemsStat(EItemIdentify.Bottom, new Item(EItemIdentify.Bottom, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Bottom\Male\Bottom.png")))));
+			Game.User.Pants = new ItemsStat(EItemIdentify.Pants, new Item(EItemIdentify.Pants, "0000", "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Pants\Male\Pants.png")))));
+			Game.User.Bottom = new ItemsStat(EItemIdentify.Bottom, new Item(EItemIdentify.Bottom, "0000", "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Bottom\Male\Bottom.png")))));
 
 			this.DataContext = Game;
 
@@ -72,7 +72,7 @@ namespace BumSimulator
 		void SetIEvent()
 		{
 			//StaffShop0Button
-			BuySellCheckEvent Staff0Event = new BuySellCheckEvent(StaffShop0Button, new List<CheckAbility>() { new CheckAbility(Game.User.Valutes, Settings_.Mood3Price) }, new List<IAbility>() { new PositiveAbility(Game.User.Bottom, new Item(EItemIdentify.Bottom, "Красні кросівки", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Bottom\Male\RedSneakersBottom.png"))))) });
+			BuySellCheckEvent Staff0Event = new BuySellCheckEvent(StaffShop0Button, new List<CheckAbility>() { new CheckAbility(Game.User.Valutes, Settings_.Mood3Price) }, new List<IAbility>() { new PositiveAbility(Game.User.Bottom, new Item(EItemIdentify.Bottom, "2540", "Красні кросівки", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Bottom\Male\RedSneakersBottom.png"))))), new PositiveAbility(Game.User.Times, Settings_.DefaultTimeMove) });
 			Staff0Event.Start(Game);
 			//їжа
 			CheckEvent Food0Event = new CheckEvent(Food0Button, new List<IAbility>() { new NegativeAbility(Game.User.Mood, new MoodStat(4)), new NegativeAbility(Game.User.Hp, new HpStat(4)), new PositiveAbility(Game.User.Food, new FoodStat(7)), new PositiveAbility(Game.User.Times, Settings_.DefaultTimeMove) });
@@ -109,8 +109,8 @@ namespace BumSimulator
 			Hp4Event.Start(Game);
 
 			//пробєжка
-			//CheckEvent Sport0Event = new CheckEvent(Sport0Button, new List<CheckAbility>() { new CheckAbility(Game.User.Transports, new TransportStat(ETransport.JoggingShoes)) }, new List<IAbility>() { new PositiveAbility(Game.User.Mood, new MoodStat(2)), new PositiveAbility(Game.User.Hp, new HpStat(8)), new NegativeAbility(Game.User.Food, new FoodStat(4)) });
-			//Sport0Event.Start(Game);
+			CheckEvent Sport0Event = new CheckEvent(Sport0Button, new List<CheckAbility>() { new CheckAbility(Game.User.Bottom, new Item(EItemIdentify.Bottom, "2540", "Красні Кросівки")) }, new List<IAbility>() { new PositiveAbility(Game.User.Mood, new MoodStat(2)), new PositiveAbility(Game.User.Hp, new HpStat(8)), new NegativeAbility(Game.User.Food, new FoodStat(4)), new PositiveAbility(Game.User.Times, Settings_.DefaultTimeMove) });
+			Sport0Event.Start(Game);
 			//спорт
 			SubscribeEvent Sport1Event = new SubscribeEvent(Sport1Button, new List<CheckAbility>() { new CheckAbility(Game.User.Valutes, Settings_.sport1Price) }, new List<IAbility>() { new PositiveAbility(Game.User.Mood, new MoodStat(1)), new PositiveAbility(Game.User.Hp, new HpStat(15)), new NegativeAbility(Game.User.Food, new FoodStat(4)) }, new TimeStat(0, 30));
 			SubscribeEvent Sport2Event = new SubscribeEvent(Sport2Button, new List<CheckAbility>() { new CheckAbility(Game.User.Valutes, Settings_.sport2Price) }, new List<IAbility>() { new PositiveAbility(Game.User.Mood, new MoodStat(3)), new PositiveAbility(Game.User.Hp, new HpStat(25)), new NegativeAbility(Game.User.Food, new FoodStat(6)) }, new TimeStat(0, 30));

@@ -17,22 +17,24 @@ namespace BumSimulator.Stats
 {
 	class Item : IObject
 	{
-		public EItemIdentify ID { get; set; }
+		public EItemIdentify MainID { get; set; }
+		public string ID { get; set; }
 		public string Name { get; set; }
 		public ImageSource Image { get; set; }
 
-		public Item(EItemIdentify ID)
+		public Item(EItemIdentify MainID, string ID, string Name)
 		{
+			this.MainID = MainID;
 			this.ID = ID;
-			Name = null;
-			Image = null;
+			this.Name = Name;
 		}
-		public Item(EItemIdentify ID, ImageSource Image)
+		public Item(EItemIdentify MainID, string ID, ImageSource Image)
 		{
+			this.MainID = MainID;
 			this.ID = ID;
 			this.Image = Image;
 		}
-		public Item(EItemIdentify ID, string Name, ImageSource Image) : this(ID, Image)
+		public Item(EItemIdentify MainID, string ID, string Name, ImageSource Image) : this(MainID, ID, Image)
 		{
 			this.Name = Name;
 		}
@@ -83,11 +85,11 @@ namespace BumSimulator.Stats
 		{
 			if (otherStat is ItemsStat)
 			{
-				if ((otherStat as ItemsStat).Items != null || MainID == (otherStat as ItemsStat).MainID)
+				if ((otherStat as ItemsStat).Items != null && MainID == (otherStat as ItemsStat).MainID)
 				{
 					foreach (Item x in (otherStat as ItemsStat).Items)
 					{
-						if (this.Items.Contains(x) == false || MainID == x.ID)
+						if (this.Items.Contains(x) == false && MainID == x.MainID)
 						{
 							this.Items.Add(x);
 							return true;
@@ -99,7 +101,7 @@ namespace BumSimulator.Stats
 			{
 				if ((otherStat as Item) != null)
 				{
-					if (this.Items.Contains((otherStat as Item)) == false)
+					if (this.Items.Contains((otherStat as Item)) == false && MainID == (otherStat as Item).MainID)
 					{
 						this.Items.Add((otherStat as Item));
 						return true;
@@ -112,11 +114,11 @@ namespace BumSimulator.Stats
 		{
 			if (otherStat is ItemsStat)
 			{
-				if ((otherStat as ItemsStat).Items != null)
+				if ((otherStat as ItemsStat).Items != null && MainID == (otherStat as ItemsStat).MainID)
 				{
 					foreach (Item x in (otherStat as ItemsStat).Items)
 					{
-						if (Items.Contains(x))
+						if (Items.Contains(x) || MainID == x.MainID)
 						{
 							Items.Remove(x);
 							if(SelectedItem == x)
@@ -132,7 +134,7 @@ namespace BumSimulator.Stats
 			{
 				if ((otherStat as Item) != null)
 				{
-					if (this.Items.Contains((otherStat as Item)))
+					if (this.Items.Contains((otherStat as Item)) && MainID == (otherStat as Item).MainID)
 					{
 						this.Items.Remove((otherStat as Item));
 						if (SelectedItem == (otherStat as Item))
@@ -146,19 +148,37 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public virtual bool Is(IObject ItemsStat)
+		public virtual bool Is(IObject TempItem)
 		{
-			if (ItemsStat is ItemsStat)
+			if (TempItem is ItemsStat)
 			{
-				foreach (Item x in (ItemsStat as ItemsStat).Items)
+				if ((TempItem as ItemsStat).Items != null && MainID == (TempItem as ItemsStat).MainID)
 				{
-					if (Items.Contains(x))
+					foreach (Item x in Items)
+					{
+						foreach (Item y in (TempItem as ItemsStat).Items)
+						{
+							if (Items.Contains(y) == false && x.ID == y.ID)
+							{
+								System.Windows.MessageBox.Show("Потрібно " + y.Name);
+								return false;
+							}
+						}
+					}
+				}
+			}
+			else if (TempItem is Item)
+			{
+				foreach (Item x in Items)
+				{
+					if(x.ID == (TempItem as Item).ID && x.MainID == (TempItem as Item).MainID)
 					{
 						return true;
 					}
 				}
 			}
-			return true;
+			System.Windows.MessageBox.Show("Потрібно " + (TempItem as Item).Name);
+			return false;
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
