@@ -64,6 +64,8 @@ namespace BumSimulator
 
 			this.DataContext = Game;
 
+			ListBox.ItemsSource = Game.User.Bottom.Items;
+
 
 			SetIEvent();
 		}

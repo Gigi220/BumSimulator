@@ -33,6 +33,7 @@ namespace BumSimulator.MainGame
 
 		public DriverLicenseStat DriverLicense { get; set; }
 
+
 		public ItemStat Bottom { get; set; }
 
 		//public ImgStat TopHead { get; set; }

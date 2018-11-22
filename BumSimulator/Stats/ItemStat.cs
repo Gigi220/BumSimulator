@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,13 @@ namespace BumSimulator.Stats
 {
 	class Item : INotifyPropertyChanged
 	{
+		public int ID { get; set; }
 		public string Name { get; set; }
 		public ImageSource Image { get; set; }
 
 		public Item()
 		{
+			ID = 0;
 			Name = null;
 			Image = null;
 		}
@@ -30,6 +33,10 @@ namespace BumSimulator.Stats
 		public Item(string Name, ImageSource Image) : this(Image)
 		{
 			this.Name = Name;
+		}
+		public Item(string Name, ImageSource Image, int ID) : this(Name, Image)
+		{
+			this.ID = ID;
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -42,7 +49,7 @@ namespace BumSimulator.Stats
 
 	class ItemStat : IStat
 	{
-		public List<Item> Items { get; set; }
+		public ObservableCollection<Item> Items { get; set; }
 
 		Item selectedItem;
 		public Item SelectedItem
@@ -57,16 +64,16 @@ namespace BumSimulator.Stats
 
 		public ItemStat()
 		{
-			Items = new List<Item>();
+			Items = new ObservableCollection<Item>();
 		}
 		public ItemStat(Item Item)
 		{
-			this.Items = new List<Item>() { Item };
+			this.Items = new ObservableCollection<Item>() { Item };
 			SelectedItem = Items[0];
 		}
-		public ItemStat(List<Item> Items)
+		public ItemStat(ObservableCollection<Item> Items)
 		{
-			this.Items = new List<Item>(Items);
+			this.Items = new ObservableCollection<Item>(Items);
 		}
 
 		public virtual bool PositiveEffect(IStat otherStat)
