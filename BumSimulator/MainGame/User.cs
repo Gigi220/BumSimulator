@@ -34,15 +34,15 @@ namespace BumSimulator.MainGame
 		public DriverLicenseStat DriverLicense { get; set; }
 
 
-		public ItemStat Bottom { get; set; }
+		public ItemsStat TopHead { get; set; }
+		public ItemsStat Head { get; set; }
+		public ItemsStat Tors { get; set; }
 
-		//public ImgStat TopHead { get; set; }
-		//public ImgStat Head { get; set; }
-		//public ImgStat Tors { get; set; }
-		//public ImgStat LeftHand { get; set; }
-		//public ImgStat RightHand { get; set; }
-		//public ImgStat Pants { get; set; }
-		//public ImgStat Bottom { get; set; }
+		public ItemsStat LeftHand { get; set; }
+		public ItemsStat RightHand { get; set; }
+
+		public ItemsStat Pants { get; set; }
+		public ItemsStat Bottom { get; set; }
 
 
 		public User()

@@ -6,5 +6,5 @@
 	public enum EEduc : byte { None, MultiTable, School, College, University, StudyInEngland };
 	public enum EDificultLevel : byte { Easy, Normal, Hard };
 
-	public enum EWareIdentify : byte { None };
+	public enum EItemIdentify : byte { None, TopHead, Head, Tors, LeftHand, RightHand, Pants, Bottom};
 }

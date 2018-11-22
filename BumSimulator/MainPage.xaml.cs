@@ -51,16 +51,15 @@ namespace BumSimulator
 			Game = new Game(new User("Jack", new TimeStat(), new Valutes(new UAH(2000000), new USD(5000000)), new BottlesStat(20), new TransportStat(),
 				new PropertyStat(), new RaitingStat(0), new StatusStat(Enums.EStatus.Homeless), new EducStat(), new MoodStat(50), new HpStat(50), new FoodStat(50)));
 
-			//Game.User.TopHead = new ImgStat(new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\TopHead\Male\TopHead.png"))), Settings_.DefaultTopHead);
-			//Game.User.Head = new ImgStat(new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Head\Male\Head.png"))), Settings_.DefaultHead);
-			//Game.User.Tors = new ImgStat(new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Tors\Male\Tors.png"))), Settings_.DefaultTors);
+			Game.User.TopHead = new ItemsStat(EItemIdentify.TopHead, new Item(EItemIdentify.TopHead, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\TopHead\Male\TopHead.png")))));
+			Game.User.Head = new ItemsStat(EItemIdentify.Head, new Item(EItemIdentify.Head, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Head\Male\Head.png")))));
+			Game.User.Tors = new ItemsStat(EItemIdentify.Tors, new Item(EItemIdentify.Tors, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Tors\Male\Tors.png")))));
 
-			//Game.User.LeftHand = new ImgStat(new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\LeftHand\Male\LeftHand.png"))), Settings_.DefaultLeftHand);
-			//Game.User.RightHand = new ImgStat(new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\RightHand\Male\RightHand.png"))), Settings_.DefaultRightHand);
+			Game.User.LeftHand = new ItemsStat(EItemIdentify.LeftHand, new Item(EItemIdentify.LeftHand, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\LeftHand\Male\LeftHand.png")))));
+			Game.User.RightHand = new ItemsStat(EItemIdentify.RightHand, new Item(EItemIdentify.RightHand, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\RightHand\Male\RightHand.png")))));
 
-			//Game.User.Pants = new ImgStat(new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Pants\Male\Pants.png"))), Settings_.DefaultPants);
-			//Game.User.Bottom = new ImgStat(new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Bottom\Male\Bottom.png"))), Settings_.DefaultBottom);
-			Game.User.Bottom = new ItemStat(new Item("дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Bottom\Male\Bottom.png")))));
+			Game.User.Pants = new ItemsStat(EItemIdentify.Pants, new Item(EItemIdentify.Pants, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Pants\Male\Pants.png")))));
+			Game.User.Bottom = new ItemsStat(EItemIdentify.Bottom, new Item(EItemIdentify.Bottom, "дефолт", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Bottom\Male\Bottom.png")))));
 
 			this.DataContext = Game;
 
@@ -73,8 +72,8 @@ namespace BumSimulator
 		void SetIEvent()
 		{
 			//StaffShop0Button
-			BuySellCheckEvent Staff0Event = new BuySellCheckEvent(StaffShop0Button, new List<CheckAbility>() { new CheckAbility(Game.User.Valutes, Settings_.Mood3Price) }, new List<IAbility>() { new PositiveAbility(Game.User.Bottom, new ItemStat(new Item("Красні кросівки", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Bottom\Male\RedSneakersBottom.png")))))) });
-			Staff0Event.Start(Game);
+			//BuySellCheckEvent Staff0Event = new BuySellCheckEvent(StaffShop0Button, new List<CheckAbility>() { new CheckAbility(Game.User.Valutes, Settings_.Mood3Price) }, new List<IAbility>() { new PositiveAbility(Game.User.Bottom, new Item(EItemIdentify.Bottom, "Красні кросівки", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Bottom\Male\RedSneakersBottom.png"))))) });
+			//Staff0Event.Start(Game);
 			//їжа
 			CheckEvent Food0Event = new CheckEvent(Food0Button, new List<IAbility>() { new NegativeAbility(Game.User.Mood, new MoodStat(4)), new NegativeAbility(Game.User.Hp, new HpStat(4)), new PositiveAbility(Game.User.Food, new FoodStat(7)), new PositiveAbility(Game.User.Times, Settings_.DefaultTimeMove) });
 			CheckEvent Food1Event = new CheckEvent(Food1Button, new List<CheckAbility>() { new CheckAbility(Game.User.Valutes, Settings_.Food1Price) }, new List<IAbility>() { new NegativeAbility(Game.User.Valutes, new UAH(100)), new NegativeAbility(Game.User.Mood, new MoodStat(3)), new NegativeAbility(Game.User.Hp, new HpStat(3)), new PositiveAbility(Game.User.Food, new FoodStat(15)), new PositiveAbility(Game.User.Times, Settings_.DefaultTimeMove) });
@@ -271,9 +270,10 @@ namespace BumSimulator
 
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+		private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			Game.User.Bottom.SelectItem();
+			Item p = (Item)ListBox.SelectedItem;
+			Game.User.Bottom.SelectedItem = p;
 		}
 	}
 }

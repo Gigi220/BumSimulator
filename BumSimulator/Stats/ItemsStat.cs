@@ -11,32 +11,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Threading;
 using System.Windows.Threading;
+using BumSimulator.Enums;
 
 namespace BumSimulator.Stats
 {
 	class Item : INotifyPropertyChanged
 	{
-		public int ID { get; set; }
+		public EItemIdentify ID { get; set; }
 		public string Name { get; set; }
 		public ImageSource Image { get; set; }
 
-		public Item()
+		public Item(EItemIdentify ID)
 		{
-			ID = 0;
+			this.ID = ID;
 			Name = null;
 			Image = null;
 		}
-		public Item(ImageSource Image)
-		{
-			this.Image = Image;
-		}
-		public Item(string Name, ImageSource Image) : this(Image)
-		{
-			this.Name = Name;
-		}
-		public Item(string Name, ImageSource Image, int ID) : this(Name, Image)
+		public Item(EItemIdentify ID, ImageSource Image)
 		{
 			this.ID = ID;
+			this.Image = Image;
+		}
+		public Item(EItemIdentify ID, string Name, ImageSource Image) : this(ID, Image)
+		{
+			this.Name = Name;
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -47,8 +45,9 @@ namespace BumSimulator.Stats
 		}
 	}
 
-	class ItemStat : IStat
+	class ItemsStat : IStat
 	{
+		EItemIdentify MainID;
 		public ObservableCollection<Item> Items { get; set; }
 
 		Item selectedItem;
@@ -62,29 +61,33 @@ namespace BumSimulator.Stats
 			}
 		}
 
-		public ItemStat()
+		public ItemsStat(EItemIdentify MainID)
 		{
 			Items = new ObservableCollection<Item>();
+			this.MainID = MainID;
 		}
-		public ItemStat(Item Item)
+		public ItemsStat(EItemIdentify MainID, Item Item)
 		{
 			this.Items = new ObservableCollection<Item>() { Item };
 			SelectedItem = Items[0];
+			this.MainID = MainID;
 		}
-		public ItemStat(ObservableCollection<Item> Items)
+		public ItemsStat(EItemIdentify MainID, ItemsStat Items)
 		{
-			this.Items = new ObservableCollection<Item>(Items);
+			this.Items = new ObservableCollection<Item>();
+			PositiveEffect(Items);
+			this.MainID = MainID;
 		}
 
 		public virtual bool PositiveEffect(IStat otherStat)
 		{
-			if (otherStat is ItemStat)
+			if (otherStat is ItemsStat)
 			{
-				if ((otherStat as ItemStat).Items != null)
+				if ((otherStat as ItemsStat).Items != null || MainID == (otherStat as ItemsStat).MainID)
 				{
-					foreach (Item x in (otherStat as ItemStat).Items)
+					foreach (Item x in (otherStat as ItemsStat).Items)
 					{
-						if (this.Items.Contains(x) == false)
+						if (this.Items.Contains(x) == false || MainID == x.ID)
 						{
 							this.Items.Add(x);
 							return true;
@@ -92,15 +95,26 @@ namespace BumSimulator.Stats
 					}
 				}
 			}
+			else if (otherStat is Item)
+			{
+				if ((otherStat as Item) != null)
+				{
+					if (this.Items.Contains((otherStat as Item)) == false)
+					{
+						this.Items.Add((otherStat as Item));
+						return true;
+					}
+				}
+			}
 			return false;
 		}
 		public virtual bool NegativeEffect(IStat otherStat)
 		{
-			if (otherStat is ItemStat)
+			if (otherStat is ItemsStat)
 			{
-				if ((otherStat as ItemStat).Items != null)
+				if ((otherStat as ItemsStat).Items != null)
 				{
-					foreach (Item x in (otherStat as ItemStat).Items)
+					foreach (Item x in (otherStat as ItemsStat).Items)
 					{
 						if (Items.Contains(x))
 						{
@@ -114,14 +128,29 @@ namespace BumSimulator.Stats
 					}
 				}
 			}
+			else if (otherStat is Item)
+			{
+				if ((otherStat as Item) != null)
+				{
+					if (this.Items.Contains((otherStat as Item)))
+					{
+						this.Items.Remove((otherStat as Item));
+						if (SelectedItem == (otherStat as Item))
+						{
+							SelectedItem = Items[0];
+						}
+						return true;
+					}
+				}
+			}
 			return false;
 		}
 
-		public virtual bool Is(IStat ItemStat)
+		public virtual bool Is(IStat ItemsStat)
 		{
-			if (ItemStat is ItemStat)
+			if (ItemsStat is ItemsStat)
 			{
-				foreach (Item x in (ItemStat as ItemStat).Items)
+				foreach (Item x in (ItemsStat as ItemsStat).Items)
 				{
 					if (Items.Contains(x))
 					{
@@ -130,15 +159,6 @@ namespace BumSimulator.Stats
 				}
 			}
 			return true;
-		}
-
-		public void SelectItem()
-		{
-			SelectedItem = Items[1];
-		}
-		public void SelectItem(Item TempItem)
-		{
-			SelectedItem = TempItem;
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

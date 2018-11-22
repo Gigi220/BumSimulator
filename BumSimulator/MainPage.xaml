@@ -39,14 +39,14 @@
 
 							<Grid Grid.Column="1" Grid.Row="1">
 								<Canvas>
-									<Image Grid.Column="1" Grid.Row="0" Canvas.Left="165" Source="{Binding Path=User.TopHead.ImageSource}"/>
-									<Image Grid.Column="1" Grid.Row="1" Canvas.Left="165" Canvas.Top="26" Source="{Binding Path=User.Head.ImageSource}"/>
-									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="74" Source="{Binding Path=User.Tors.ImageSource}"/>
+									<Image Grid.Column="1" Grid.Row="0" Canvas.Left="165" Source="{Binding Path=User.TopHead.SelectedItem.Image}"/>
+									<Image Grid.Column="1" Grid.Row="1" Canvas.Left="165" Canvas.Top="26" Source="{Binding Path=User.Head.SelectedItem.Image}"/>
+									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="74" Source="{Binding Path=User.Tors.SelectedItem.Image}"/>
 
-									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.LeftHand.ImageSource}"/>
-									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.RightHand.ImageSource}"/>
+									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.LeftHand.SelectedItem.Image}"/>
+									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.RightHand.SelectedItem.Image}"/>
 
-									<Image Grid.Column="1" Grid.Row="3" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.Pants.ImageSource}"/>
+									<Image Grid.Column="1" Grid.Row="3" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.Pants.SelectedItem.Image}"/>
 									<Image Grid.Column="1" Grid.Row="4" Canvas.Left="165" Canvas.Top="430" Source="{Binding Path=User.Bottom.SelectedItem.Image}"/>
 								</Canvas>
 
@@ -481,7 +481,7 @@
 								<ColumnDefinition Width="50"/>
 							</Grid.ColumnDefinitions>
 
-							<ListBox Grid.Column="0" x:Name="ListBox">
+							<ListBox Grid.Column="0" x:Name="ListBox" SelectionChanged="ListBox_SelectionChanged">
 								<ListBox.ItemTemplate>
 									<DataTemplate>
 										<StackPanel Margin="5">
@@ -570,7 +570,7 @@
 						<Grid Grid.Row="2">
 
 							<Grid Grid.Column="1" x:Name="MapGrid">
-								<Button Click="Button_Click"
+								<Button
 										Template="{DynamicResource ElipseButton}">
 									<Image Source="Img\Images\compass.jpg" x:Name="CompassImg"/>
 								</Button>

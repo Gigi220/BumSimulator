@@ -349,7 +349,6 @@ namespace BumSimulator.Events
 		{
 			Button.Click += delegate(object sender, RoutedEventArgs e)
 			{
-				Game.MakeMove();
 				if (IsPressed == false)
 				{
 					if (CheckList != null && CheckList.Count > 0)
@@ -424,8 +423,6 @@ namespace BumSimulator.Events
 					Button.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, (ThreadStart)delegate { Button.Background = (Brush)App.Current.TryFindResource("TButtonGradientBrush"); });// = );
 					IsPressed = !IsPressed;
 
-					Game.MakeMove();
-
 					AsyncStart(Game, Token, Price);
 				}
 				else
@@ -445,7 +442,6 @@ namespace BumSimulator.Events
 							xx.DoEffect();
 						}
 					}
-					Game.MakeMove();
 					Button.Background = (Brush)App.Current.TryFindResource("FButtonGradientBrush");
 					IsPressed = !IsPressed;
 				}
@@ -564,7 +560,6 @@ namespace BumSimulator.Events
 		{
 			Button.Click += delegate (object sender, RoutedEventArgs e)
             {
-                Game.MakeMove();
 				if (IsPressed == false)
 				{
 					if (CheckList != null && CheckList.Count > 0)
@@ -603,7 +598,6 @@ namespace BumSimulator.Events
 		{
 			Button.Click += delegate (object sender, RoutedEventArgs e)
 			{
-                Game.MakeMove();
 				if (IsPressed == false)
 				{
 					if (CheckList != null && CheckList.Count > 0)
