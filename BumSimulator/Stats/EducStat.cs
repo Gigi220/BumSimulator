@@ -51,7 +51,7 @@ namespace BumSimulator.Stats
 			Educ = new List<EEduc>(educ);
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is EducStat)
 			{
@@ -70,7 +70,7 @@ namespace BumSimulator.Stats
 			}
 			return false;
 		}
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is EducStat)
 			{
@@ -90,7 +90,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool Is(IStat PropertyStat)
+		public bool Is(IObject PropertyStat)
 		{
 			if (PropertyStat is EducStat)
 			{

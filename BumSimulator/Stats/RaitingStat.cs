@@ -29,7 +29,7 @@ namespace BumSimulator.Stats
 			this.Raiting = Raiting;
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is RaitingStat)
 			{
@@ -39,7 +39,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is RaitingStat)
 			{
@@ -49,7 +49,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool Is(IStat RaitingStat)
+		public bool Is(IObject RaitingStat)
 		{
 			if (RaitingStat is RaitingStat)
 			{

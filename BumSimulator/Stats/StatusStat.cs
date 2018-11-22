@@ -26,7 +26,7 @@ namespace BumSimulator.Stats
             Status = points;
         }
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is StatusStat)
 			{
@@ -35,7 +35,7 @@ namespace BumSimulator.Stats
 			}
 			return false;
 		}
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is StatusStat)
 			{
@@ -45,7 +45,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool Is(IStat StatusStat)
+		public bool Is(IObject StatusStat)
 		{
 			if (StatusStat is StatusStat)
 			{

@@ -8,12 +8,15 @@ using System.Runtime.CompilerServices;
 
 namespace BumSimulator.Stats
 {
-	interface IStat : INotifyPropertyChanged
+	interface IObject : INotifyPropertyChanged
 	{
-		bool PositiveEffect(IStat otherStat);
-		bool NegativeEffect(IStat otherStat);
-		bool Is(IStat check);
 		void OnPropertyChanged([CallerMemberName]string prop = "");
+	}
+	interface IStat : IObject
+	{
+		bool PositiveEffect(IObject otherStat);
+		bool NegativeEffect(IObject otherStat);
+		bool Is(IObject check);
 	}
 	interface IMainStat : IStat
 	{
@@ -26,9 +29,9 @@ namespace BumSimulator.Stats
 	}
 	abstract class Stat : IStat
 	{
-		public virtual bool PositiveEffect(IStat otherStat) { return true; }
-		public virtual bool NegativeEffect(IStat otherStat) { return true; }
-		public virtual bool Is(IStat otherStat) { return true; }
+		public virtual bool PositiveEffect(IObject otherStat) { return true; }
+		public virtual bool NegativeEffect(IObject otherStat) { return true; }
+		public virtual bool Is(IObject otherStat) { return true; }
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		public void OnPropertyChanged([CallerMemberName]string prop = "")

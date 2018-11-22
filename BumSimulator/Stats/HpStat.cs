@@ -47,7 +47,7 @@ namespace BumSimulator.Stats
 			Points = points;
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is HpStat)
 			{
@@ -67,7 +67,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is HpStat)
 			{
@@ -87,7 +87,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool Is(IStat HpStat)
+		public bool Is(IObject HpStat)
 		{
 			if (HpStat is HpStat)
 			{
@@ -116,7 +116,7 @@ namespace BumSimulator.Stats
         void CheckLoseEvent(TimeStat Time)
         {
             TimeStat loseday = new TimeStat(Time);
-            loseday.AddDays(Settings_.daysDied);
+            loseday.AddDate(Settings_.daysDied);
             System.Windows.MessageBox.Show(Settings_.warningMessege);
             while (true)
             {

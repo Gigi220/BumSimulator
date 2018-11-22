@@ -39,15 +39,15 @@
 
 							<Grid Grid.Column="1" Grid.Row="1">
 								<Canvas>
-									<Image Grid.Column="1" Grid.Row="0" Canvas.Left="165" Source="{Binding Path=User.TopHead.ImageSource}"/>
-									<Image Grid.Column="1" Grid.Row="1" Canvas.Left="165" Canvas.Top="26" Source="{Binding Path=User.Head.ImageSource}"/>
-									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="74" Source="{Binding Path=User.Tors.ImageSource}"/>
+									<Image Grid.Column="1" Grid.Row="0" Canvas.Left="165" Source="{Binding Path=User.TopHead.SelectedItem.Image}"/>
+									<Image Grid.Column="1" Grid.Row="1" Canvas.Left="165" Canvas.Top="26" Source="{Binding Path=User.Head.SelectedItem.Image}"/>
+									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="74" Source="{Binding Path=User.Tors.SelectedItem.Image}"/>
 
-									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.LeftHand.ImageSource}"/>
-									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.RightHand.ImageSource}"/>
+									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.LeftHand.SelectedItem.Image}"/>
+									<Image Grid.Column="1" Grid.Row="2" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.RightHand.SelectedItem.Image}"/>
 
-									<Image Grid.Column="1" Grid.Row="3" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.Pants.ImageSource}"/>
-									<Image Grid.Column="1" Grid.Row="4" Canvas.Left="165" Canvas.Top="430" Source="{Binding Path=User.Bottom.ImageSource}"/>
+									<Image Grid.Column="1" Grid.Row="3" Canvas.Left="165" Canvas.Top="249" Source="{Binding Path=User.Pants.SelectedItem.Image}"/>
+									<Image Grid.Column="1" Grid.Row="4" Canvas.Left="165" Canvas.Top="430" Source="{Binding Path=User.Bottom.SelectedItem.Image}"/>
 								</Canvas>
 
 							</Grid>
@@ -57,7 +57,7 @@
 					<Grid Grid.Column="2">
 						<Grid.RowDefinitions>
 							<RowDefinition/>
-							<RowDefinition Height="170"/>
+							<RowDefinition Height="350"/>
 						</Grid.RowDefinitions>
 
 						<Grid Grid.Row="0" x:Name="PlayGrid" Margin="5">
@@ -478,15 +478,19 @@
 						<Grid Grid.Row="1">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition/>
-								<ColumnDefinition/>
+								<ColumnDefinition Width="50"/>
 							</Grid.ColumnDefinitions>
 
-							<Grid Grid.Column="1" x:Name="MapGrid">
-								<Button
-										Template="{DynamicResource ElipseButton}">
-									<Image Source="Img\Images\compass.jpg" x:Name="CompassImg"/>
-								</Button>
-							</Grid>
+							<ListBox Grid.Column="0" x:Name="ListBox" SelectionChanged="ListBox_SelectionChanged">
+								<ListBox.ItemTemplate>
+									<DataTemplate>
+										<StackPanel Margin="5">
+											<Image Width="100" Height="75" Source="{Binding Path=Image}" />
+											<TextBlock FontSize="16" Text="{Binding Path=Name}" HorizontalAlignment="Center" />
+										</StackPanel>
+									</DataTemplate>
+								</ListBox.ItemTemplate>
+							</ListBox>
 						</Grid>
 						
 					</Grid>
@@ -496,6 +500,7 @@
 						<Grid.RowDefinitions>
 							<RowDefinition/>
 							<RowDefinition/>
+							<RowDefinition Height="150"/>
 						</Grid.RowDefinitions>
 
 						<Grid x:Name="StatsLabelGrid" Grid.Row="0" Grid.Column="0">
@@ -560,6 +565,16 @@
 								<TextBlock x:Name="DriverLicenseText" FontWeight="Bold"
 										   FontSize="10" Text="{Binding Path=User.Transports.HighestTransport, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
 							</Canvas>
+						</Grid>
+
+						<Grid Grid.Row="2">
+
+							<Grid Grid.Column="1" x:Name="MapGrid">
+								<Button
+										Template="{DynamicResource ElipseButton}">
+									<Image Source="Img\Images\compass.jpg" x:Name="CompassImg"/>
+								</Button>
+							</Grid>
 						</Grid>
 						
 					</Grid>

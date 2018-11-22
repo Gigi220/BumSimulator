@@ -8,6 +8,9 @@ using BumSimulator.MainGame;
 using BumSimulator.Stats;
 using BumSimulator.Stats.Valutas;
 using BumSimulator.Stats.Wares;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace BumSimulator.Settings
 {
@@ -98,7 +101,19 @@ namespace BumSimulator.Settings
         public static UAH sport1Price = new UAH(15000);
         public static USD sport2Price = new USD(2000);
 
-		public static short daysDied = 7;
+		public static TimeStat daysDied = new TimeStat(0, 7);
+
+		public static TimeStat DefaultTimeMove = new TimeStat(0, 1);
+
+		public static ImageSource DefaultTopHead = new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\TopHead\Male\TopHead.png")));
+		public static ImageSource DefaultHead = new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Head\Male\Head.png")));
+		public static ImageSource DefaultTors = new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Tors\Male\Tors.png")));
+
+		public static ImageSource DefaultLeftHand = new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\LeftHand\Male\LeftHand.png")));
+		public static ImageSource DefaultRightHand = new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\RightHand\Male\RightHand.png")));
+
+		public static ImageSource DefaultPants = new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Pants\Male\Pants.png")));
+		public static ImageSource DefaultBottom = new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Bottom\Male\Bottom.png")));
 
 		public static void SetSettings(EDificultLevel dificultLevel)
 		{

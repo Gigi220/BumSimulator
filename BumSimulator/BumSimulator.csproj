@@ -60,13 +60,13 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Stats\DriverLicenseStat.cs" />
     <Compile Include="Stats\EducStat.cs" />
-    <Compile Include="Stats\ImageSourcesStat.cs" />
     <Compile Include="Stats\PassportStat.cs" />
     <Compile Include="Stats\Prices.cs" />
     <Compile Include="Settings\UIControls.cs" />
     <Compile Include="Stats\RaitingStat.cs" />
     <Compile Include="Stats\TimeStat.cs" />
     <Compile Include="Stats\TransportStat.cs" />
+    <Compile Include="Stats\ItemsStat.cs" />
     <Compile Include="Stats\Wares\Ability.cs" />
     <Compile Include="MainGame\Game.cs" />
     <Compile Include="MainGame\User.cs" />

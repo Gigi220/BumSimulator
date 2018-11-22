@@ -50,7 +50,7 @@ namespace BumSimulator.Stats.Valutas
 			this.USD = USD;
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
             if (otherStat is UAH)
             {
@@ -62,7 +62,7 @@ namespace BumSimulator.Stats.Valutas
             }
             return false;
 		}
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
             if (otherStat is UAH)
             {
@@ -81,7 +81,7 @@ namespace BumSimulator.Stats.Valutas
             return false;
 		}
 
-		public bool Is(IStat otherStat)
+		public bool Is(IObject otherStat)
 		{
 			if (otherStat is UAH)
 			{
@@ -140,7 +140,7 @@ namespace BumSimulator.Stats.Valutas
 			this.Count = Count;
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is UAH)
 			{
@@ -154,7 +154,7 @@ namespace BumSimulator.Stats.Valutas
             }
 			return false;
 		}
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is UAH)
 			{
@@ -169,7 +169,7 @@ namespace BumSimulator.Stats.Valutas
 			return false;
 		}
 
-		public bool Is(IStat UAH)
+		public bool Is(IObject UAH)
 		{
 			if (UAH is UAH)
 			{
@@ -199,8 +199,8 @@ namespace BumSimulator.Stats.Valutas
         void CheckLoseEvent(TimeStat Time)
         {
             TimeStat loseday = new TimeStat(Time);
-            loseday.AddDays(Settings_.daysDied);
-            System.Windows.MessageBox.Show(Settings_.warningMessege);
+			loseday.AddDate(Settings_.daysDied);
+			System.Windows.MessageBox.Show(Settings_.warningMessege);
             while (true)
             {
                 if (Count > 0)
@@ -267,7 +267,7 @@ namespace BumSimulator.Stats.Valutas
 			count = Count;
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is USD)
 			{
@@ -281,7 +281,7 @@ namespace BumSimulator.Stats.Valutas
             }
             return false;
 		}
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
             if (otherStat is USD)
             {
@@ -296,7 +296,7 @@ namespace BumSimulator.Stats.Valutas
             return false;
 		}
 
-        public bool Is(IStat USD)
+        public bool Is(IObject USD)
 		{
             if (USD is USD)
 			{
@@ -326,8 +326,8 @@ namespace BumSimulator.Stats.Valutas
         void CheckLoseEvent(TimeStat Time)
         {
             TimeStat loseday = new TimeStat(Time);
-            loseday.AddDays(Settings_.daysDied);
-            System.Windows.MessageBox.Show(Settings_.warningMessege);
+			loseday.AddDate(Settings_.daysDied);
+			System.Windows.MessageBox.Show(Settings_.warningMessege);
             while (true)
             {
                 if (Count > 0)

@@ -18,7 +18,7 @@ namespace BumSimulator.Stats.Wares
     abstract class Ability : IAbility
     {
         public IStat MainStat { get; set; }
-        public IStat TempStat { get; set; }
+        public IObject TempStat { get; set; }
 
         public Ability()
         {
@@ -29,7 +29,7 @@ namespace BumSimulator.Stats.Wares
             this.MainStat = MainStat;
             TempStat = null;
         }
-        public Ability(IStat MainStat, IStat TempStat)
+        public Ability(IStat MainStat, IObject TempStat)
         {
             this.MainStat = MainStat;
             this.TempStat = TempStat;
@@ -58,7 +58,7 @@ namespace BumSimulator.Stats.Wares
     {
         public NegativeAbility() : base() { }
         public NegativeAbility(IStat MainStat) : base(MainStat) { }
-        public NegativeAbility(IStat MainStat, IStat TempStat) : base(MainStat, TempStat) { }
+        public NegativeAbility(IStat MainStat, IObject TempStat) : base(MainStat, TempStat) { }
 
         public override bool DoEffect()
         {
@@ -74,7 +74,7 @@ namespace BumSimulator.Stats.Wares
 	{
         public PositiveAbility() : base() { }
         public PositiveAbility(IStat MainStat) : base(MainStat) { }
-        public PositiveAbility(IStat MainStat, IStat TempStat) : base(MainStat, TempStat) { }
+        public PositiveAbility(IStat MainStat, IObject TempStat) : base(MainStat, TempStat) { }
 
         public override bool DoEffect()
 		{
@@ -90,7 +90,7 @@ namespace BumSimulator.Stats.Wares
 	{
         public CheckAbility() : base() { }
         public CheckAbility(IStat MainStat) : base(MainStat) { }
-        public CheckAbility(IStat MainStat, IStat TempStat) : base(MainStat, TempStat) { }
+        public CheckAbility(IStat MainStat, IObject TempStat) : base(MainStat, TempStat) { }
 
 		public bool Check()
 		{

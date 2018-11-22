@@ -38,7 +38,7 @@ namespace BumSimulator.Stats
 			this.IsDriverLicense = IsDriverLicense;
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is DriverLicenseStat)
 			{
@@ -47,7 +47,7 @@ namespace BumSimulator.Stats
 			}
 			return false;
 		}
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is DriverLicenseStat)
 			{
@@ -57,7 +57,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool Is(IStat IsDriverLicense)
+		public bool Is(IObject IsDriverLicense)
 		{
 			if (IsDriverLicense is DriverLicenseStat)
 			{

@@ -148,7 +148,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool Is(IStat TimeStat)
+		public bool Is(IObject TimeStat)
 		{
 			if (TimeStat is TimeStat)
 			{
@@ -185,7 +185,7 @@ namespace BumSimulator.Stats
 			}
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is TimeStat)
 			{
@@ -194,7 +194,7 @@ namespace BumSimulator.Stats
 			}
 			return false;
 		}
-		public bool NegativeEffect(IStat otherStat) { return true; }
+		public bool NegativeEffect(IObject otherStat) { return true; }
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		public void OnPropertyChanged([CallerMemberName]string prop = "")

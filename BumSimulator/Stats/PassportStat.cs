@@ -29,7 +29,7 @@ namespace BumSimulator.Stats
 			IsPassport = Is;
 		}
 
-		public bool PositiveEffect(IStat otherStat)
+		public bool PositiveEffect(IObject otherStat)
 		{
 			if (otherStat is PassportStat)
 			{
@@ -39,7 +39,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool NegativeEffect(IStat otherStat)
+		public bool NegativeEffect(IObject otherStat)
 		{
 			if (otherStat is PassportStat)
 			{
@@ -49,7 +49,7 @@ namespace BumSimulator.Stats
 			return false;
 		}
 
-		public bool Is(IStat PassportStat)
+		public bool Is(IObject PassportStat)
 		{
 			if (PassportStat is PassportStat)
 			{
