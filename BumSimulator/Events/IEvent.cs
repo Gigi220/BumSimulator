@@ -227,7 +227,10 @@ namespace BumSimulator.Events
 				}
 				foreach (var x in Abilities)
 				{
-					x.DoEffect();
+					if(x.DoEffect() == false)
+					{
+						return;
+					}
 				}
 				Game.MakeMove();
 			};
@@ -256,7 +259,10 @@ namespace BumSimulator.Events
 
 				foreach (var x in Abilities)
 				{
-					x.DoEffect();
+					if (x.DoEffect() == false)
+					{
+						return;
+					}
 				}
 				Game.MakeMove();
 				Button.IsEnabled = !Button.IsEnabled;
@@ -289,7 +295,10 @@ namespace BumSimulator.Events
 					}
 					foreach (var x in Abilities)
 					{
-						x.DoEffect();
+						if (x.DoEffect() == false)
+						{
+							return;
+						}
 					}
 
 					Game.MakeMove();
@@ -303,12 +312,18 @@ namespace BumSimulator.Events
 						if (x is PositiveAbility)
 						{
 							NegativeAbility xx = new NegativeAbility(((Ability)x).MainStat, ((Ability)x).TempStat);
-							xx.DoEffect();
+							if (xx.DoEffect() == false)
+							{
+								return;
+							}
 						}
                         else if (x is NegativeAbility)
 						{
 							PositiveAbility xx = new PositiveAbility(((Ability)x).MainStat, ((Ability)x).TempStat);
-							xx.DoEffect();
+							if (xx.DoEffect() == false)
+							{
+								return;
+							}
 						}
 					}
 
