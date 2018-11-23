@@ -58,7 +58,14 @@ namespace BumSimulator.Stats
 			get { return selectedItem; }
 			set
 			{
-				selectedItem = value;
+				if(value == null)
+				{
+					selectedItem = Items[0];
+				}
+				else
+				{
+					selectedItem = value;
+				}
 				OnPropertyChanged("SelectedItem");
 			}
 		}

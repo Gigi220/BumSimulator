@@ -74,6 +74,8 @@ namespace BumSimulator
 			//StaffShop0Button
 			BuySellCheckEvent Staff0Event = new BuySellCheckEvent(StaffShop0Button, new List<CheckAbility>() { new CheckAbility(Game.User.Valutes, Settings_.Mood3Price) }, new List<IAbility>() { new PositiveAbility(Game.User.Bottom, new Item(EItemIdentify.Bottom, "2540", "Красні кросівки", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Bottom\Male\RedSneakersBottom.png"))))), new PositiveAbility(Game.User.Times, Settings_.DefaultTimeMove) });
 			Staff0Event.Start(Game);
+			BuySellCheckEvent Staff1Event = new BuySellCheckEvent(StaffShop1Button, new List<CheckAbility>() { new CheckAbility(Game.User.Valutes, Settings_.Mood3Price) }, new List<IAbility>() { new PositiveAbility(Game.User.Bottom, new Item(EItemIdentify.Bottom, "2550", "Красні кросівки", new BitmapImage(new Uri(System.IO.Path.GetFullPath(@"..\..\Img\StaffsPart\Bottom\Male\RedSneakersBottom.png"))))), new PositiveAbility(Game.User.Times, Settings_.DefaultTimeMove) });
+			Staff1Event.Start(Game);
 			//їжа
 			CheckEvent Food0Event = new CheckEvent(Food0Button, new List<IAbility>() { new NegativeAbility(Game.User.Mood, new MoodStat(4)), new NegativeAbility(Game.User.Hp, new HpStat(4)), new PositiveAbility(Game.User.Food, new FoodStat(7)), new PositiveAbility(Game.User.Times, Settings_.DefaultTimeMove) });
 			CheckEvent Food1Event = new CheckEvent(Food1Button, new List<CheckAbility>() { new CheckAbility(Game.User.Valutes, Settings_.Food1Price) }, new List<IAbility>() { new NegativeAbility(Game.User.Valutes, new UAH(100)), new NegativeAbility(Game.User.Mood, new MoodStat(3)), new NegativeAbility(Game.User.Hp, new HpStat(3)), new PositiveAbility(Game.User.Food, new FoodStat(15)), new PositiveAbility(Game.User.Times, Settings_.DefaultTimeMove) });
@@ -272,8 +274,14 @@ namespace BumSimulator
 
 		private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			Item p = (Item)ListBox.SelectedItem;
+			Item p;
+			p = (Item)ListBox.SelectedItem;
 			Game.User.Bottom.SelectedItem = p;
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }
